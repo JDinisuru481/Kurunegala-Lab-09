@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class it26100481Lab9Q2 {
+public class it26100481Lab0902 {
 
     public static double circleArea(double radius) {
         return Math.PI * radius * radius;

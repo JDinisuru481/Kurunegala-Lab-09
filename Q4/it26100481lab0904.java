@@ -1,13 +1,12 @@
 import java.util.Scanner;
 
-public class it26100481Lab9Q4 {
+public class IT26100481Lab9Q4 {
 
-    public static double calcFinalMark(double assignmentMark, double examMark) {
-        return (assignmentMark * 0.30) + (examMark * 0.70);
+    public static double calcFinalMark(double assignment, double exam) {
+        return (assignment * 0.30) + (exam * 0.70);
     }
 
     public static String findGrades(double finalMark) {
-
         if (finalMark >= 75)
             return "A";
         else if (finalMark >= 60)
@@ -18,34 +17,40 @@ public class it26100481Lab9Q4 {
             return "F";
     }
 
-    public static void printDetails(String name, double finalMark, String grade) {
-
-        System.out.println("\nStudent Name : " + name);
-        System.out.println("Final Mark   : " + finalMark);
-        System.out.println("Grade        : " + grade);
-    }
-
     public static void main(String[] args) {
 
         Scanner input = new Scanner(System.in);
 
-        for (int i = 1; i <= 5; i++) {
+        String[] names = new String[5];
+        double[] finalMarks = new double[5];
+        String[] grades = new String[5];
 
-            System.out.println("\nStudent " + i);
+        for (int i = 0; i < 5; i++) {
 
-            System.out.print("Enter Name: ");
-            String name = input.nextLine();
+            System.out.print("Enter Name of Student " + (i + 1) + ": ");
+            names[i] = input.next();
 
-            System.out.print("Enter Assignment Mark: ");
-            double assignmentMark = Double.parseDouble(input.nextLine());
+            System.out.print("Enter Assignment Mark (out of 100) for "
+                    + names[i] + ": ");
+            double assignment = input.nextDouble();
 
-            System.out.print("Enter Exam Mark: ");
-            double examMark = Double.parseDouble(input.nextLine());
+            System.out.print("Enter Exam Paper Mark (out of 100) for "
+                    + names[i] + ": ");
+            double exam = input.nextDouble();
 
-            double finalMark = calcFinalMark(assignmentMark, examMark);
-            String grade = findGrades(finalMark);
+            finalMarks[i] = calcFinalMark(assignment, exam);
+            grades[i] = findGrades(finalMarks[i]);
 
-            printDetails(name, finalMark, grade);
+            System.out.println();
+        }
+
+        System.out.println("\nName\t\tFinal Mark\tGrade");
+
+        for (int i = 0; i < 5; i++) {
+            System.out.printf("%-10s\t%-10.2f\t%s\n",
+                    names[i],
+                    finalMarks[i],
+                    grades[i]);
         }
 
         input.close();

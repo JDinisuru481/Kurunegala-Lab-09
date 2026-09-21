@@ -1,4 +1,4 @@
-public class IT26100481Lab9Q3 {
+public class IT26100481Lab0903 {
 
     public static int add(int a, int b) {
         return a + b;
